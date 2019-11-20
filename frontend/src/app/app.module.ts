@@ -12,12 +12,14 @@ import { EventsComponent } from './events/events.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { TokenInterceptorService } from './token-interceptor.service';
+
 
 
 @NgModule({
@@ -42,8 +44,12 @@ import { Observable } from 'rxjs';
     FormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [AuthService ,AuthGuard , EventsService],
-  
+  providers: [AuthService ,AuthGuard , EventsService, 
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -70,6 +70,22 @@ router.post('/login', (req, res) => {
     })
 })
 
+function verifyToken(req , res, next){
+
+    if(!req.headers.authorization){
+        res.status(401).send('Unauthorized request');
+    }
+    let token  = req.headers.authorization.split(' ')[1];
+    if(token === 'null') res.status(401).send('Unauthorized request');
+
+    let payload = jwt.verify(token , 'secretKey');
+    if(!payload) res.status(401).send('Unauthorized request');
+    req.userId = payload.subject;
+    next();
+
+}
+
+
 //    ********** Simple Get Events *************
 
 router.get('/events',(req, res) => {
@@ -137,7 +153,7 @@ router.get('/events',(req, res) => {
 //    ********** Simple Get Special Events *************
 
 
-router.get('/specialevents',(req, res) => {
+router.get('/specialevents',verifyToken ,(req, res) => {
     let specialevents = [
         {
             "_id":"1",
