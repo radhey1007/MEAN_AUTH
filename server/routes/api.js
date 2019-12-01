@@ -3,11 +3,14 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const User = require('../models/user');
 const mongoose = require('mongoose');
-const db = "mongodb+srv://radhey:radhey123@eventsdb-g4k5d.mongodb.net/eventsDB?retryWrites=true&w=majority";
+
+const dbConfig   = require('../database/db');
 
 
+const IncomingForm = require('formidable').IncomingForm
 
-mongoose.connect(db, {
+
+mongoose.connect(dbConfig.db, {
         useNewUrlParser: true
     })
     .then(res => {
@@ -215,4 +218,21 @@ router.get('/specialevents',verifyToken ,(req, res) => {
     res.json(specialevents);
 })
 
-module.exports = router
+router.post('/upload',function upload(req, res)  {
+    
+    console.log(res , 'res');
+
+    var form = new IncomingForm();
+    console.log("about to parse");
+
+    form.on('file', (field,file) => {
+        console.log('file ', file)
+    })
+    form.on('end' , () => {
+        res.json();
+    })
+    form.parse();
+    })
+
+
+module.exports = router;

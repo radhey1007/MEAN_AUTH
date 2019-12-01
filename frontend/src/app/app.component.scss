@@ -285,11 +285,51 @@
 //   }
 
 .primary-purple{
-  background-color:#ec6a15
+  background-color:#173a44
 }
 .mat-toolbar {
-  color: rgba(18, 5, 5, 0.87);
+  color: #173a44;
 }
 a:hover {
   color: #fafafa;
 }
+.mat-drawer {
+  background-color: #173a44;
+}
+.mat-list-item:hover{
+  background-color: maroon;
+  }
+
+  .mat-toolbar[_ngcontent-cxd-c0] {
+    color: rgba(126, 255, 220, 0.87);
+}
+
+a[_ngcontent-qyt-c0]:hover {
+  color: #fe2e1f;
+  background-color: #3d8ee6;
+}
+.mat-button-base,.mat-list-item{
+  background-color: #01b7ef;
+}
+.mat-button-base:hover{
+  background-color: maroon;
+}
+
+.mat-icon {
+  background-color: #01b7ef;
+}
+.custom-navbar {
+  margin-right: 8px;
+  color: #f8f9fa;
+}
+.mat-list-base .mat-list-item {
+  color: #f8f9fa;
+}
+.custom-navbar-social-icon{
+  margin-right:30px;
+}
+
+.mgRight100{
+margin-right:510px;
+}
+

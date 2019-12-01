@@ -66,14 +66,24 @@
   </h1>
     <span class="menu-spacer"></span>
     <div>
-      <a mat-button [routerLink]="'/login'" *ngIf="!authService.loggedIn()" routerLinkActive="active"> Login </a>
-      <a mat-button (click)="authService.loggedOut()" *ngIf="authService.loggedIn()" routerLinkActive="active"> Logout </a>
-      <a mat-button [routerLink]="'/register'" *ngIf="!authService.loggedIn()"  routerLinkActive="active"> Create Account </a>
-      <a mat-button [routerLink]="'/events'" routerLinkActive="active"> Events </a>
-      <a mat-button [routerLink]="'/special-events'" routerLinkActive="active"> Special-events </a>
+      
+
+        <a mat-button class="custom-navbar" [routerLink]="'/login'" *ngIf="!authService.loggedIn()" routerLinkActive="active"> Login </a>
+        <a mat-button class="custom-navbar" (click)="authService.loggedOut()" *ngIf="authService.loggedIn()" routerLinkActive="active"> Logout </a>
+        <a mat-button class="custom-navbar" [routerLink]="'/register'" *ngIf="!authService.loggedIn()"  routerLinkActive="active"> Create Account </a>
+        <a mat-button class="custom-navbar" [routerLink]="'/events'" routerLinkActive="active"> Events </a>
+        <a mat-button class="custom-navbar mgRight100" [routerLink]="'/special-events'" routerLinkActive="active"> Special-events </a>
+      
+      
+        <a class="custom-navbar-social-icon"  href="#"><i class="fab fa-facebook-f"></i></a>
+        <a class="custom-navbar-social-icon"  href="#"><i class="fab fa-twitter"></i></a>
+        <a class="custom-navbar-social-icon"  href="#"><i class="fab fa-instagram"></i></a>
+     
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
+
+
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
@@ -84,8 +94,15 @@
       <a mat-list-item [routerLink]="'/events'" routerLinkActive="active"> Events </a>
       <a mat-list-item [routerLink]="'/special-events'" routerLinkActive="active"> Special-events </a>
       <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+
+
+      <a mat-list-item [routerLink]="'/addevents'" routerLinkActive="active"> Add Event </a>
+
+
+
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <div style="height: 410vh;">
       <router-outlet></router-outlet>

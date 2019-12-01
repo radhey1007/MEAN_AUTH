@@ -1,3 +1,4 @@
+import { AddEventsComponent } from './add-events/add-events.component';
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -32,7 +33,14 @@ const routes: Routes = [
     path:'register',
     component:RegisterComponent
   },
-  { path: '**', redirectTo: '/events' }
+  {
+    path:'addevents',
+    component:AddEventsComponent
+  },
+  { 
+    path: '**',
+    redirectTo: '/events'
+  },
 ];
 
 @NgModule({

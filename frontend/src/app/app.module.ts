@@ -13,13 +13,16 @@ import { SpecialEventsComponent } from './special-events/special-events.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatDialogModule, MatProgressBarModule } from  '@angular/material';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { AddEventsComponent } from './add-events/add-events.component';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { UploadDialogComponent } from './upload-dialog/upload-dialog.component'
 
 
 @NgModule({
@@ -28,7 +31,9 @@ import { TokenInterceptorService } from './token-interceptor.service';
     RegisterComponent,
     LoginComponent,
     EventsComponent,
-    SpecialEventsComponent
+    SpecialEventsComponent,
+    AddEventsComponent,
+    UploadDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +45,14 @@ import { TokenInterceptorService } from './token-interceptor.service';
     MatListModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
+    MatProgressBarModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FlexLayoutModule
   ],
+  entryComponents: [UploadDialogComponent],
   providers: [AuthService ,AuthGuard , EventsService, 
   {
     provide:HTTP_INTERCEPTORS,
